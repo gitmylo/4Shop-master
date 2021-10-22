@@ -1,0 +1,11 @@
+diff a/resources/views/layouts/admin.blade.php b/resources/views/layouts/admin.blade.php	(rejected hunks)
+@@ -26,6 +26,9 @@
+                 <li class="nav-item">
+                     <a class="nav-link" href="{{ route('admin.products.index') }}">Producten</a>
+                 </li>
++                <li class="nav-item">
++                    <a class="nav-link" href="{{ route('admin.categories.index') }}">Categorieën</a>
++                </li>
+                 <li class="nav-item">
+                     <a class="nav-link" href="{{ route('admin.users.index') }}">Accounts</a>
+                 </li>
