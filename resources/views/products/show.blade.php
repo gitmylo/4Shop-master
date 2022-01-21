@@ -7,7 +7,12 @@
 				<img src="{{ url($product->image ?? 'img/placeholder.jpg') }}" alt="{{ $product->title }}" class="rounded">
 				<div class="product-body">
 					<form action="{{ route('products.order', $product) }}" method="POST" data-controller="size">
-						<h5 class="product-title"><span>{{ $product->title }}</span><em>&euro;{{ $product->price }}</em></h5>
+						<h5 class="product-title"><span>{{ $product->title }}</span><div>
+                                @if ($product->discount != 0)
+                                    <s>&euro;{{ $product->price }}</s>
+                                @endif
+                                <em>&euro;{{ number_format($product->price - $product->discount, 2, '.', '') }}</em>
+                            </div></h5>
 						@unless(empty($product->description))
 							<p>{{ $product->description }}</p>
 						@endunless

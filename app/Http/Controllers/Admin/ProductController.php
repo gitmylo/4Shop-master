@@ -30,15 +30,17 @@ class ProductController extends Controller
             'active' => 'required|boolean',
             'leiding' => 'required|boolean',
             'image' => 'nullable|image',
-            'description' => 'nullable'
+            'description' => 'nullable',
+            'category' => 'required'
         ]);
 
         $product = new Product();
-        $product->title = $request->title; 
+        $product->title = $request->title;
         $product->price = $request->price;
         $product->active = $request->active;
         $product->leiding = $request->leiding;
         $product->description = $request->description;
+        $product->category = $request->category;
         if($request->hasFile('image'))
         {
             $product->image = $request->image->store('img');
@@ -66,7 +68,7 @@ class ProductController extends Controller
             'description' => 'required',
             'sizes' => 'required'
         ]);
-        
+
         $type = new Type();
         $type->title = $request->title;
         $type->description = $request->description;
@@ -93,7 +95,7 @@ class ProductController extends Controller
     {
         $type->delete();
         return redirect()->route('admin.products.types', $product);
-    }    
+    }
 
     public function edit(Product $product)
     {
@@ -112,7 +114,7 @@ class ProductController extends Controller
             'description' => 'nullable'
         ]);
 
-        $product->title = $request->title; 
+        $product->title = $request->title;
         $product->price = $request->price;
         $product->active = $request->active;
         $product->leiding = $request->leiding;
